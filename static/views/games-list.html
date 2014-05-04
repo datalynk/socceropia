@@ -10,7 +10,7 @@
             </tr>
             <tr class="upcoming-game" ng-repeat="game in g" ng-click="do_forecast(game)">
               <td class="game-time">{{game.time}} PM ET</td>
-              <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
+              <td class="weather"><img ng-src="{{game.weather}}" /></td>
               <td class="team-info flag"><img  ng-src="/icons/48/{{game.host_i}}.png"></td>
               <td class="team-info teama">{{game.host}}</td>
               <td class="team-info vs">vs.</td>

@@ -6,6 +6,13 @@ function GamesListCtrl($scope, $modal, Games, Forecast) {
             games = result.objects,
             grouped;
 
+        var icons = ['http://icons-ak.wxug.com/i/c/j/clear.gif',
+                        'http://icons-ak.wxug.com/i/c/j/partlycloudy.gif',
+                        'http://icons-ak.wxug.com/i/c/j/mostlycloudy.gif',
+                        'http://icons-ak.wxug.com/i/c/j/rain.gif',
+                        'http://icons-ak.wxug.com/i/c/j/tstorms.gif',
+                        'http://icons-ak.wxug.com/i/c/j/mostlycloudy.gif'];
+
         grouped = _.chain(games)
             .map(function(game) {
                 var d = new Date(game.date);
@@ -17,7 +24,8 @@ function GamesListCtrl($scope, $modal, Games, Forecast) {
                     date: m.format('dddd MMMM D, YYYY'),    // TODO: shoule be angularjs module
                     time: m.format('h:mm'),
                     host_i: game.team_host.name.replace(' ', '-'),
-                    guest_i: game.team_guest.name.replace(' ', '-')
+                    guest_i: game.team_guest.name.replace(' ', '-'),
+                    weather: icons[_.random(0, icons.length-1)]
                 };
             })
             .groupBy(function(game) {

@@ -13,11 +13,13 @@ TEAM_HOST_WIN = 1
 TEAM_GUEST_WIN = 2
 TEAM_DRAW = 3
 
+CITIES_WEATHER = {'Salvador': 'http://icons-ak.wxug.com/i/c/j/partlycloudy.gif',
+                  'Sao Paulo': 'http://icons-ak.wxug.com/i/c/j/clear.gif'}
+
 app = Flask(__name__, static_url_path='')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forecaster.db'
 db = flask.ext.sqlalchemy.SQLAlchemy(app)
 db_session = scoped_session(db.session)
-
 
 
 class User(db.Model):
@@ -46,6 +48,13 @@ class GameDetail(db.Model):
     city = db.Column(db.String(100))
     weather_c = db.Column(db.String(10))
     weather_t = db.Column(db.String(10))
+
+    def weather_icon(self):
+        if not CITIES_WEATHER.has_key(self.city):
+            weather = get_weather(self.city)
+            if 'current_observation' in weather:
+                CITIES_WEATHER[self.city] = weather['current_observation']['icon_url'].replace('/k/', '/j/')
+        return CITIES_WEATHER.get(self.city, None)
 
 class GameResult(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -126,6 +135,8 @@ db.create_all()
 manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 manager.create_api(Forecast,  methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Game, methods=['GET'], results_per_page=100, max_results_per_page=100)
+manager.create_api(GameDetail, methods=['GET'], include_methods=['weather_icon'], results_per_page=100, max_results_per_page=100)
+
 manager.create_api(Team, methods=['GET'])
 manager.create_api(User, methods=['GET'], include_columns=['id', 'name', 'score'],
                    results_per_page=100, max_results_per_page=100)
@@ -162,7 +173,7 @@ def autoregistration():
 
 @app.route('/weather')
 def weater():
-    weather = get_weather('Salvador')
+    weather = get_weather('Fortaleza')
     return json.dumps(weather)
 
 if __name__ == '__main__':
