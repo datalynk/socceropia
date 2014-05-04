@@ -168,7 +168,7 @@
 
       body {
         padding-top: 65px;
-        background: url('/img/grass-field-soccer-ball.jpg') no-repeat center center fixed;
+        background: url('http://images.forwallpaper.com/files/thumbs/preview/12/128104__grass-field-soccer-ball_p.jpg') no-repeat center center fixed;
         background-size: cover;
       }
 
@@ -204,4 +204,8 @@
         color: #eee;
         text-shadow: 1px 1px 3px #000;
         float: right;
+      }
+
+      .navbar {
+        height: 90px;
       }
