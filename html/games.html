@@ -1,0 +1,296 @@
+<html lang="en">
+<script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>Socceropia</title>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <style type="text/css">
+      td, th {
+        vertical-align: middle !important;
+      }
+      .flag img {
+        height: 40px;
+      }
+      .flag, .weather {
+        width: 70px;
+      }
+      .team-info {
+        border: 0 !important;
+      }
+      .vs {
+        text-align: center;
+        width: 100px;
+      }
+
+      .teamb {
+        text-align: right;
+      }
+
+      .teama, .teamb {
+        width: 20%;
+      }
+
+      .weather, .group, .points, .score {
+        text-align: center;
+      }
+
+      .game-time {
+        width: 125px;
+      }
+
+      .total tbody>tr>th {
+        background-color: #48C;
+      }
+
+      .right {
+        text-align: right;
+      }
+
+      .forecast {
+        text-align: center;
+        height: 100px;
+        width: 150px;
+      }
+
+      .upcoming tbody>tr:hover>td {
+        background-color: #16A085;
+        color:#eff;
+      }
+
+      .upcoming .table-striped tbody tr:nth-child(odd):hover td {
+        background-color: #16A085;
+        color:#eff;
+      }
+
+      .modal-body {
+        text-align: center;
+      }
+
+      .input-score {
+        width: 80px !important;
+      }
+
+      .prediction {
+        margin-top: 30px;
+      }
+    </style>
+
+  </head>
+  <body role="document" style="zoom: 1;">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bootstrap</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li class="active"><a href="#games">Games</a></li>
+            <li><a href="#leaderboard">Leaderboard</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="page-header">
+        <h1>Upcoming Games</h1>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped upcoming">
+          <tbody>
+            <tr>
+              <th colspan="7">Thursday June 12, 2014</th>
+              <th class="group">Your Bet</th>
+            </tr>
+            <tr class="upcoming-game">
+              <td class="game-time">4:00 PM ET</td>
+              <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/bra.png"></td>
+              <td class="team-info teama">Brazil</td>
+              <td class="team-info vs">vs.</td>
+              <td class="team-info teamb">Croatia</td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/cro.png"></td>
+              <td class="group flag"><img src="http://img.fifa.com/images/flags/4/cro.png"></td>
+            </tr>
+            <tr>
+              <th colspan="8">Friday June 13, 2014</th>
+            </tr>
+            <tr>
+              <td class="game-time">12:00 PM ET</td>
+              <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/mex.png"></td>
+              <td class="team-info teama">Mexico</td>
+              <td class="team-info vs">vs.</td>
+              <td class="team-info teamb">Cameroon</td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/cmr.png"></td>
+              <td class="group flag"><img src="http://img.fifa.com/images/flags/4/cmr.png"></td>
+            </tr>
+            <tr>
+              <td class="game-time">3:00 PM ET</td>
+              <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/esp.png"></td>
+              <td class="team-info teama">Spain</td>
+              <td class="team-info vs">vs.</td>
+              <td class="team-info teamb">Netherlands</td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/ned.png"></td>
+              <td class="group">Forecast!</td>
+            </tr>
+            <tr>
+              <td class="game-time">6:00 PM ET</td>
+              <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/chi.png"></td>
+              <td class="team-info teama">Chile</td>
+              <td class="team-info vs">vs.</td>
+              <td class="team-info teamb">Australia</td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/aus.png"></td>
+              <td class="group">Forecast!</td>
+            </tr>
+          </tbody>
+        </table>
+
+      <div class="page-header">
+        <h1>Past Games</h1>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <tbody>
+            <tr>
+              <th colspan="7">Thursday June 12, 2014</th>
+              <th class="group">Your Bet</th>
+              <th class="points">Points Won</th>
+            </tr>
+            <tr>
+              <td class="game-time">4:00 PM ET</td>
+              <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/bra.png"></td>
+              <td class="team-info teama">Brazil</td>
+              <td class="team-info vs"><h4>1 - 0</t4></td>
+              <td class="team-info teamb">Croatia</td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/cro.png"></td>
+              <td class="group flag"><img src="http://img.fifa.com/images/flags/4/cro.png"></td>
+              <td class="points">3</td>
+            </tr>
+            <tr>
+              <th colspan="9">Friday June 13, 2014</th>
+            </tr>
+            <tr>
+              <td class="game-time">12:00 PM ET</td>
+              <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/mex.png"></td>
+              <td class="team-info teama">Mexico</td>
+              <td class="team-info vs"><h4>3 - 2</t4></td>
+              <td class="team-info teamb">Cameroon</td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/cmr.png"></td>
+              <td class="group">N/A</td>
+              <td class="points">0</td>
+            </tr>
+            <tr>
+              <td class="game-time">3:00 PM ET</td>
+              <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/esp.png"></td>
+              <td class="team-info teama">Spain</td>
+              <td class="team-info vs"><h4>1 - 1</t4></td>
+              <td class="team-info teamb">Netherlands</td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/ned.png"></td>
+              <td class="group">N/A</td>
+              <td class="points">0</td>
+            </tr>
+            <tr>
+              <td class="game-time">6:00 PM ET</td>
+              <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/chi.png"></td>
+              <td class="team-info teama">Chile</td>
+              <td class="team-info vs"><h4>1 - 2</t4></td>
+              <td class="team-info teamb">Australia</td>
+              <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/aus.png"></td>
+              <td class="group">N/A</td>
+              <td class="points">0</td>
+            </tr>
+            <tr>
+              <th class="total right info" colspan="8">Total Points</th>
+              <th class="total points info">12</th>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <div id="forecast" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Forecast!</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Pick your team:</h4>
+            <div class="btn-group btn-group-lg">
+                <button type="button" class="btn btn-default forecast">
+                  <img src="http://img.fifa.com/images/flags/4/bra.png"><br>
+                  Brazil Win
+                </button>
+                <button type="button" class="btn btn-default forecast">Draw</button>
+                <button type="button" class="btn btn-default forecast">
+                  <img src="http://img.fifa.com/images/flags/4/cro.png"><br>
+                  Croatia Win
+                </button>
+            </div>
+
+            <div class="prediction">
+              <h4>Final score prediction:</h4>
+              <form class="form-inline" role="form">
+                <div class="form-group">
+                  <input type="text" class="form-control input-score" id="teama-score" placeholder="Brazil">
+                </div>
+                :
+                <div class="form-group">
+                  <input type="text" class="form-control input-score" id="teamb-score" placeholder="Croatia">
+                </div>
+              </form>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<script>
+  $('.upcoming-game').click(function() {
+    $('#forecast').modal('show');
+  });
+</script>  
+
+</body>
+</html>
