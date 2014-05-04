@@ -103,6 +103,7 @@ var ForecastCtrl = function($scope, $modalInstance, game) {
 
 
     $scope.analyze = function() {
+        var forecast = $scope.forecast;
         if (forecast.team_host_goals == '' || forecast.team_guest_goals == '') {
             $scope.error = '';
             return false;

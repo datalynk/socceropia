@@ -72,10 +72,6 @@
     margin-right: 5px;
   }
 
-  .profile {
-    float: right;
-    margin-top: 10px;
-  }
 
   .leaderboard-rank, .leaderboard-points {
     width: 80px;
@@ -140,8 +136,17 @@
     text-align: center;
   }
 
-  .navbar {
-        height: 90px;
+     .navbar-nav, .profile {
+        font-family: 'Lato', sans-serif;
+        font-size: 21px;
+        font-style: italic;
+        color: #eee;
+        text-shadow: 1px 1px 3px #000;
+        float: right;
+      }
+
+      .navbar {
+        background: rgba(0,0,0,0.1);
       }
 
       .navbar a {
@@ -157,15 +162,17 @@
         margin-top: 10px;
       }
 
-      .navbar-nav {
+      .navbar-nav, .profile {
         margin-top: 30px;
       }
 
+
       body {
         padding-top: 65px;
-        background: url('/img/grass-field-soccer-ball.jpg') no-repeat;
+        background: url('/img/grass-field-soccer-ball.jpg') no-repeat center center fixed;
         background-size: cover;
       }
+
 
       h1 {
         color: white;
@@ -174,4 +181,19 @@
       tbody>tr>td {
         background-color: #fff;
         color:#333;
+      }
+
+      .page-body {
+        color: #eee;
+      }
+
+      .powered-by img {
+        margin-right: 15px;
+      }
+
+      .powered-by {
+        background-color: #fff;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
       }
