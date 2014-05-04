@@ -92,11 +92,6 @@
         margin-right: 5px;
       }
 
-      .profile {
-        float: right;
-        margin-top: 10px;
-      }
-
       .leaderboard-rank, .leaderboard-points {
         width: 80px;
         text-align: center;
@@ -172,7 +167,7 @@
         margin-top: 10px;
       }
 
-      .navbar-nav {
+      .navbar-nav, .profile {
         margin-top: 30px;
       }
 
@@ -189,6 +184,20 @@
       tbody>tr>td {
         background-color: #fff;
         color:#333;
+      }
+
+
+      .profile {
+        font-family: 'Lato', sans-serif;
+        font-size: 21px;
+        font-style: italic;
+        color: #eee;
+        text-shadow: 1px 1px 3px #000;
+        float: right;
+      }
+
+      .navbar {
+        background: rgba(0,0,0,0.1);
       }
 
     </style>
@@ -213,14 +222,13 @@
             <a href="#">Home</a>
             <a href="#games">Games</a>
             <a href="#leaderboard">Leaderboard</a>
+            <a href="#rules">Rules</a>
           </div>
           <div class="profile">
             <img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
-            Shinji Kim
+            Shinji K.
           </div>
-          <div>
-          </div>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </div>
     <div class="landing">
