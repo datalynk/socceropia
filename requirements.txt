@@ -1,0 +1,17 @@
+Flask==0.10.1
+Flask-Restless==0.13.1
+Flask-SQLAlchemy==1.0
+Jinja2==2.7.2
+MarkupSafe==0.21
+SQLAlchemy==0.9.4
+Werkzeug==0.9.4
+fake-factory==0.4.0
+itsdangerous==0.24
+mimerender==0.5.4
+py==1.4.20
+pytest==2.5.2
+python-dateutil==2.2
+python-mimeparse==0.1.4
+requests==2.2.1
+six==1.6.1
+wsgiref==0.1.2
