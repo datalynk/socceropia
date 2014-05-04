@@ -7,15 +7,18 @@
           <img ng-src="/icons/48/{{game.host}}.png"><br>
           {{game.host}} Win
         </button>
-        <button type="button" class="btn btn-default forecast" ng-model="forecast.forecast" btn-radio="2" ng-click="clear_score()">Draw</button>
-        <button type="button" class="btn btn-default forecast" ng-model="forecast.forecast" btn-radio="3" ng-click="clear_score()">
+        <button type="button" class="btn btn-default forecast" ng-model="forecast.forecast" btn-radio="3" ng-click="clear_score()">Draw</button>
+        <button type="button" class="btn btn-default forecast" ng-model="forecast.forecast" btn-radio="2" ng-click="clear_score()">
           <img ng-src="/icons/48/{{game.guest}}.png"><br>
           {{game.guest}} Win
         </button>
     </div>
     <div class="prediction" ng-show="forecast.forecast">
+
+      <div ng-show="analyze()"><alert>{{error}}</alert></div>
+
       <h4>Final score prediction:</h4>
-      <form class="form-inline" role="form">
+      <form class="form-inline" name="NumbersForm">
         <div class="form-group">
           <input type="number" class="form-control input-score center" id="teama-score" placeholder="{{game.host}}" ng-model="forecast.team_host_goals">
         </div>
@@ -28,5 +31,5 @@
 </div>
 <div class="modal-footer">
     <a href="#" ng-click="cancel()" style="padding-right: 5px;">Cancel</a>
-    <button class="btn btn-success" ng-click="save()">Save my forecast</button>
+    <button class="btn btn-success" ng-click="save()" ng-disabled="!isValid()">Save my forecast</button>
 </div>
