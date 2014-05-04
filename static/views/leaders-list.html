@@ -1,0 +1,20 @@
+<div class="page-header">
+<h1>Overall</h1>
+</div>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
+  <tbody>
+    <tr>
+      <th class="leaderboard-rank">Rank</th>
+      <th class="leaderboard-name">Name</th>
+      <th class="leaderboard-points">Points</th>
+    </tr>
+    <tr class="" ng-repeat="leader in leaders | orderBy:+leader.score">
+      <td class="leaderboard-rank">{{$index+1}}</td>
+      <td class="leaderboard-name">{{leader.name}}</td>
+      <td class="leaderboard-points">{{leader.score}}</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

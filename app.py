@@ -2,7 +2,7 @@ import json
 import requests
 from config import *
 from datetime import datetime
-from flask import Flask
+from flask import Flask, redirect, request
 import flask.ext.sqlalchemy
 import flask.ext.restless
 from sqlalchemy import event
@@ -22,6 +22,7 @@ db_session = scoped_session(db.session)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
     email = db.Column(db.String(60))
     score = db.Column(db.Integer, nullable=False, default=0)
 
@@ -126,10 +127,33 @@ manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 manager.create_api(Forecast,  methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Game, methods=['GET'])
 manager.create_api(Team, methods=['GET'])
+manager.create_api(User, methods=['GET'], include_columns=['id', 'name', 'score'],
+                   results_per_page=100, max_results_per_page=100)
 
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
+
+@app.route('/user/autoregister', methods=['POST'])
+def autoregistration():
+    token = request.form['token']
+    user_url = LOGINZA_URL % dict(token=token)
+    response = requests.get(user_url)
+
+    response.raise_for_status()
+
+    user = json.loads(response.text)
+
+    fullname = '%(first_name)s %(last_name)s' % user['name']
+    email = user['email']
+    score = 0
+
+    if not User.query.filter(User.email == email).count():
+        usr = User(name=fullname, email=email, score=score)
+        db.session.add(usr)
+        db.session.commit()
+
+    return redirect('/#games')
 
 @app.route('/weather')
 def weater():

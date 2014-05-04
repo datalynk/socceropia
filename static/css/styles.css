@@ -1,0 +1,144 @@
+  td, th {
+    vertical-align: middle !important;
+  }
+  .flag img {
+    height: 40px;
+  }
+  .flag, .weather {
+    width: 70px;
+  }
+  .team-info {
+    border: 0 !important;
+  }
+  .vs {
+    text-align: center;
+    width: 100px;
+  }
+
+  .teamb {
+    text-align: right;
+  }
+
+  .teama, .teamb {
+    width: 20%;
+  }
+
+  .weather, .group, .points, .score {
+    text-align: center;
+  }
+
+  .game-time {
+    width: 125px;
+  }
+
+  .total tbody>tr>th {
+    background-color: #48C;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .forecast {
+    text-align: center;
+    height: 100px;
+    width: 150px;
+  }
+
+  .upcoming tbody>tr:hover>td {
+    background-color: #16A085;
+    color:#eff;
+  }
+
+  .upcoming .table-striped tbody tr:nth-child(odd):hover td {
+    background-color: #16A085;
+    color:#eff;
+  }
+
+  .modal-body {
+    text-align: center;
+  }
+
+  .input-score {
+    width: 80px !important;
+  }
+
+  .prediction {
+    margin-top: 30px;
+  }
+
+  .profile img {
+    width: 30px;
+    margin-right: 5px;
+  }
+
+  .profile {
+    float: right;
+    margin-top: 10px;
+  }
+
+  .leaderboard-rank, .leaderboard-points {
+    width: 80px;
+    text-align: center;
+  }
+
+  .lead {
+    margin-top: 30px;
+  }
+
+  body {
+    padding-top: 65px;
+  }
+
+  img.bg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    opacity: 0.5;
+  }
+
+  @media screen and (max-width: 1024px) { /* Specific to this particular image */
+    img.bg {
+      left: 50%;
+      margin-left: -512px;   /* 50% */
+    }
+  }
+
+  .landing:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0, 1);
+    -moz-transition: background .3s linear;
+    -webkit-transition: background .3s linear;
+    -o-transition: background .3s linear;
+    transition: background .3s linear;
+  }
+
+  .cover-container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 200px;
+  }
+
+  .center {
+    text-align: center;
+  }

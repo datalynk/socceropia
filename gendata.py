@@ -11,7 +11,9 @@ Game.query.delete()
 GameResult.query.delete()
 
 users = []
-users.append(User(email='vasilcovsky@gmail.com'))
+users.append(User(email='vasilcovsky@gmail.com', name='Igor V', score=10))
+users.append(User(email='shinjik@gmail.com', name='Shinji K', score=15))
+
 db.session.add_all(users)
 db.session.commit()
 
