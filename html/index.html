@@ -16,7 +16,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,400italic' rel='stylesheet' type='text/css'>
     <style type="text/css">
       td, th {
         vertical-align: middle !important;
@@ -106,19 +106,15 @@
         margin-top: 30px;
       }
 
-      body {
-        padding-top: 65px;
-      }
-
       img.bg {
         /* Set rules to fill background */
         min-height: 100%;
         min-width: 1024px;
-
+        
         /* Set up proportionate scaling */
         width: 100%;
         height: auto;
-
+        
         /* Set up positioning */
         position: fixed;
         top: 0;
@@ -159,13 +155,49 @@
         margin-top: 200px;
       }
 
+      .navbar {
+        height: 90px;
+      }
+
+      .navbar a {
+        font-family: 'Lato', sans-serif;
+        font-size: 21px;
+        font-style: italic;
+        color: #E1FF81;
+        padding: 10px 20px;
+        text-shadow: 1px 1px 3px #000;
+      }
+
+      .navbar-brand img {
+        margin-top: 10px;
+      }
+
+      .navbar-nav {
+        margin-top: 30px;
+      }
+
+      body { 
+        padding-top: 65px;
+        background: url('http://images.forwallpaper.com/files/thumbs/preview/12/128104__grass-field-soccer-ball_p.jpg') no-repeat;
+        background-size: cover;
+      }
+
+      h1 {
+        color: white;
+      }
+
+      tbody>tr>td {
+        background-color: #fff;
+        color:#333;
+      }
+
     </style>
 
   </head>
   <body role="document" style="zoom: 1;">
 
     <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -174,14 +206,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Socceropia</a>
+          <a class="navbar-brand" href="#"><img src="img/logo-white.png"></a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#games">Games</a></li>
-            <li><a href="#leaderboard">Leaderboard</a></li>
-          </ul>
+          <div class="nav navbar-nav">
+            <a href="#">Home</a>
+            <a href="#games">Games</a>
+            <a href="#leaderboard">Leaderboard</a>
+          </div>
           <div class="profile">
             <img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
             Shinji Kim
