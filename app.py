@@ -134,6 +134,11 @@ manager.create_api(User, methods=['GET'], include_columns=['id', 'name', 'score'
 def index():
     return app.send_static_file('index.html')
 
+@app.route('/settings.js')
+def settings_js():
+    settings = dict(url_root=request.url_root, debug_mode=DEBUG_MODE)
+    return 'window.settings = ' + json.dumps(settings)
+
 @app.route('/user/autoregister', methods=['POST'])
 def autoregistration():
     token = request.form['token']

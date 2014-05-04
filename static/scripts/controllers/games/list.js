@@ -46,7 +46,7 @@ function GamesListCtrl($scope, $modal, Games, Forecast) {
     $scope.hasForecast = function(game) {
         var gameId = game.id;
         var forecasts = $scope.forecasts;
-        return typeof(forecasts[gameId]) != 'undefined';
+        return true;
     }
 
     $scope.do_forecast = function(game) {

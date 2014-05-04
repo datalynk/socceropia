@@ -8,4 +8,4 @@ function HeaderController($scope, $location) {
 
 }
 
-app.controller('HeaderController', ['$scope', $location, HeaderController]);
+app.controller('HeaderController', ['$scope', '$location', HeaderController]);
