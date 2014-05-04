@@ -1,0 +1,190 @@
+<html lang="en">
+<script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>Socceropia</title>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <style type="text/css">
+      td, th {
+        vertical-align: middle !important;
+      }
+      .flag img {
+        height: 40px;
+      }
+      .flag, .weather {
+        width: 70px;
+      }
+      .team-info {
+        border: 0 !important;
+      }
+      .vs {
+        text-align: center;
+        width: 100px;
+      }
+
+      .teamb {
+        text-align: right;
+      }
+
+      .teama, .teamb {
+        width: 20%;
+      }
+
+      .weather, .group, .points, .score {
+        text-align: center;
+      }
+
+      .game-time {
+        width: 125px;
+      }
+
+      .total tbody>tr>th {
+        background-color: #48C;
+      }
+
+      .right {
+        text-align: right;
+      }
+
+      .forecast {
+        text-align: center;
+        height: 100px;
+        width: 150px;
+      }
+
+      .upcoming tbody>tr:hover>td {
+        background-color: #16A085;
+        color:#eff;
+      }
+
+      .upcoming .table-striped tbody tr:nth-child(odd):hover td {
+        background-color: #16A085;
+        color:#eff;
+      }
+
+      .modal-body {
+        text-align: center;
+      }
+
+      .input-score {
+        width: 80px !important;
+      }
+
+      .prediction {
+        margin-top: 30px;
+      }
+
+      .profile img {
+        width: 30px;
+        margin-right: 5px;
+      }
+
+      .profile {
+        float: right;
+        margin-top: 10px;
+      }
+
+      .leaderboard-rank, .leaderboard-points {
+        width: 80px;
+        text-align: center;
+      }
+
+      body { 
+        padding-top: 65px; 
+      }
+    </style>
+
+  </head>
+  <body role="document" style="zoom: 1;">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Socceropia</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#games">Games</a></li>
+            <li class="active"><a href="#leaderboard">Leaderboard</a></li>
+          </ul>
+          <div class="profile">
+            <img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
+            Shinji Kim
+          </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="page-header">
+        <h1>Overall</h1>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <tbody>
+            <tr>
+              <th class="leaderboard-rank">Rank</th>
+              <th class="leaderboard-name">Name</th>
+              <th class="leaderboard-points">Points</th>
+            </tr>
+            <tr class="">
+              <td class="leaderboard-rank">1</td>
+              <td class="leaderboard-name">Shinji Kim</td>
+              <td class="leaderboard-points">13</td>
+            </tr>
+            <tr>
+              <td class="leaderboard-rank">2</td>
+              <td class="leaderboard-name">Shinji Kim</td>
+              <td class="leaderboard-points">13</td>
+            </tr>
+            <tr>
+              <td class="leaderboard-rank">3</td>
+              <td class="leaderboard-name">Shinji Kim</td>
+              <td class="leaderboard-points">13</td>
+            </tr>
+            <tr>
+              <td class="leaderboard-rank">4</td>
+              <td class="leaderboard-name">Shinji Kim</td>
+              <td class="leaderboard-points">13</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<script>
+  $('.upcoming-game').click(function() {
+    $('#forecast').modal('show');
+  });
+</script>  
+
+</body>
+</html>
