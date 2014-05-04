@@ -3,8 +3,7 @@ var app = angular.module('forecast', ['ngRoute', 'ngResource', 'ui.bootstrap', '
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '/views/landing.html',
-            controller: 'MainCtrl'
+            templateUrl: '/views/landing.html'
         })
         .when('/games', {
             templateUrl: '/views/games-list.html',
@@ -13,6 +12,9 @@ app.config(['$routeProvider', function($routeProvider) {
         .when('/leaderboard', {
             templateUrl: '/views/leaders-list.html',
             controller: 'LeadersListCtrl'
+        })
+        .when('/rules', {
+            templateUrl: '/views/rules.html'
         })
         .otherwise({
             redirectTo: '/'
