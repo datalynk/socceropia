@@ -125,7 +125,7 @@ get_weather = partial(get_weather_forecast, WEATHER_API_KEY, 'BR')
 db.create_all()
 manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 manager.create_api(Forecast,  methods=['GET', 'POST', 'DELETE'])
-manager.create_api(Game, methods=['GET'])
+manager.create_api(Game, methods=['GET'], results_per_page=100, max_results_per_page=100)
 manager.create_api(Team, methods=['GET'])
 manager.create_api(User, methods=['GET'], include_columns=['id', 'name', 'score'],
                    results_per_page=100, max_results_per_page=100)

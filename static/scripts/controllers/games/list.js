@@ -2,7 +2,30 @@ var app = angular.module('forecast');
 
 function GamesListCtrl($scope, $modal, Games, Forecast) {
     var result = Games.query(function() {
-        $scope.games = {'Thursday June 12': [{'time': '12345', host: 'Brazil', guest: 'Croatia', id:1}]};
+        var _ = window._,
+            games = result.objects,
+            grouped;
+
+        grouped = _.chain(games)
+            .map(function(game) {
+                var d = new Date(game.date);
+                var m = moment(d);
+                return {
+                    id: game.id,
+                    host: game.team_host.name,
+                    guest: game.team_guest.name,
+                    date: m.format('dddd MMMM D, YYYY'),
+                    time: m.format('h:mm'),
+                    host_i: game.team_host.name.replace(' ', '-'),
+                    guest_i: game.team_guest.name.replace(' ', '-')
+                };
+            })
+            .groupBy(function(game) {
+                return game.date;
+            })
+            .value();
+
+        $scope.games = grouped;
     });
 
     $scope.forecast = function(game) {

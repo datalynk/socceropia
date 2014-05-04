@@ -9,118 +9,17 @@
               <th class="group">Your Bet</th>
             </tr>
             <tr class="upcoming-game" ng-repeat="game in g" ng-click="forecast(game)">
-              <td class="game-time">{{game.time}}</td>
+              <td class="game-time">{{game.time}} PM ET</td>
               <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
-              <td class="team-info flag"><img  ng-src="/icons/48/{{game.host}}.png"></td>
+              <td class="team-info flag"><img  ng-src="/icons/48/{{game.host_i}}.png"></td>
               <td class="team-info teama">{{game.host}}</td>
               <td class="team-info vs">vs.</td>
               <td class="team-info teamb">{{game.guest}}</td>
-              <td class="team-info flag"><img ng-src="/icons/48/{{game.guest}}.png"></td>
-              <td class="group flag"><img src="/icons/48/{{game.host}}.png"></td>
+              <td class="team-info flag"><img ng-src="/icons/48/{{game.guest_i}}.png"></td>
+              <td class="group flag"><img ng-src="/icons/48/{{game.host_i}}.png"></td>
             </tr>
           </tbody>
       </table>
-<!--
-        <tr>
-          <th colspan="8">Friday June 13, 2014</th>
-        </tr>
-        <tr>
-          <td class="game-time">12:00 PM ET</td>
-          <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/mex.png"></td>
-          <td class="team-info teama">Mexico</td>
-          <td class="team-info vs">vs.</td>
-          <td class="team-info teamb">Cameroon</td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/cmr.png"></td>
-          <td class="group flag"><img src="http://img.fifa.com/images/flags/4/cmr.png"></td>
-        </tr>
-        <tr>
-          <td class="game-time">3:00 PM ET</td>
-          <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/esp.png"></td>
-          <td class="team-info teama">Spain</td>
-          <td class="team-info vs">vs.</td>
-          <td class="team-info teamb">Netherlands</td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/ned.png"></td>
-          <td class="group">Forecast!</td>
-        </tr>
-        <tr>
-          <td class="game-time">6:00 PM ET</td>
-          <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/chi.png"></td>
-          <td class="team-info teama">Chile</td>
-          <td class="team-info vs">vs.</td>
-          <td class="team-info teamb">Australia</td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/aus.png"></td>
-          <td class="group">Forecast!</td>
-        </tr>
-      </tbody>
-    </table>-->
-  <!--
-  <div class="page-header">
-    <h1>Past Games</h1>
-  </div>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <tbody>
-        <tr>
-          <th colspan="7">Thursday June 12, 2014</th>
-          <th class="group">Your Bet</th>
-          <th class="points">Points Won</th>
-        </tr>
-        <tr>
-          <td class="game-time">4:00 PM ET</td>
-          <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/bra.png"></td>
-          <td class="team-info teama">Brazil</td>
-          <td class="team-info vs"><h4>1 - 0</t4></td>
-          <td class="team-info teamb">Croatia</td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/cro.png"></td>
-          <td class="group flag"><img src="http://img.fifa.com/images/flags/4/cro.png"></td>
-          <td class="points">3</td>
-        </tr>
-        <tr>
-          <th colspan="9">Friday June 13, 2014</th>
-        </tr>
-        <tr>
-          <td class="game-time">12:00 PM ET</td>
-          <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/mex.png"></td>
-          <td class="team-info teama">Mexico</td>
-          <td class="team-info vs"><h4>3 - 2</t4></td>
-          <td class="team-info teamb">Cameroon</td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/cmr.png"></td>
-          <td class="group">N/A</td>
-          <td class="points">0</td>
-        </tr>
-        <tr>
-          <td class="game-time">3:00 PM ET</td>
-          <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/esp.png"></td>
-          <td class="team-info teama">Spain</td>
-          <td class="team-info vs"><h4>1 - 1</t4></td>
-          <td class="team-info teamb">Netherlands</td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/ned.png"></td>
-          <td class="group">N/A</td>
-          <td class="points">0</td>
-        </tr>
-        <tr>
-          <td class="game-time">6:00 PM ET</td>
-          <td class="weather"><span class="glyphicon glyphicon-cloud"></span></td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/chi.png"></td>
-          <td class="team-info teama">Chile</td>
-          <td class="team-info vs"><h4>1 - 2</t4></td>
-          <td class="team-info teamb">Australia</td>
-          <td class="team-info flag"><img src="http://img.fifa.com/images/flags/4/aus.png"></td>
-          <td class="group">N/A</td>
-          <td class="points">0</td>
-        </tr>
-        <tr>
-          <th class="total right info" colspan="8">Total Points</th>
-          <th class="total points info">12</th>
-        </tr>
-      </tbody>
-    </table>
-    -->
+
   </div>
 </div>
