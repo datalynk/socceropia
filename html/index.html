@@ -1,0 +1,219 @@
+<html lang="en">
+<script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>Socceropia</title>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <style type="text/css">
+      td, th {
+        vertical-align: middle !important;
+      }
+      .flag img {
+        height: 40px;
+      }
+      .flag, .weather {
+        width: 70px;
+      }
+      .team-info {
+        border: 0 !important;
+      }
+      .vs {
+        text-align: center;
+        width: 100px;
+      }
+
+      .teamb {
+        text-align: right;
+      }
+
+      .teama, .teamb {
+        width: 20%;
+      }
+
+      .weather, .group, .points, .score {
+        text-align: center;
+      }
+
+      .game-time {
+        width: 125px;
+      }
+
+      .total tbody>tr>th {
+        background-color: #48C;
+      }
+
+      .right {
+        text-align: right;
+      }
+
+      .forecast {
+        text-align: center;
+        height: 100px;
+        width: 150px;
+      }
+
+      .upcoming tbody>tr:hover>td {
+        background-color: #16A085;
+        color:#eff;
+      }
+
+      .upcoming .table-striped tbody tr:nth-child(odd):hover td {
+        background-color: #16A085;
+        color:#eff;
+      }
+
+      .modal-body {
+        text-align: center;
+      }
+
+      .input-score {
+        width: 80px !important;
+      }
+
+      .prediction {
+        margin-top: 30px;
+      }
+
+      .profile img {
+        width: 30px;
+        margin-right: 5px;
+      }
+
+      .profile {
+        float: right;
+        margin-top: 10px;
+      }
+
+      .leaderboard-rank, .leaderboard-points {
+        width: 80px;
+        text-align: center;
+      }
+
+      .lead {
+        margin-top: 30px;
+      }
+
+      body { 
+        padding-top: 65px; 
+      }
+
+      img.bg {
+        /* Set rules to fill background */
+        min-height: 100%;
+        min-width: 1024px;
+        
+        /* Set up proportionate scaling */
+        width: 100%;
+        height: auto;
+        
+        /* Set up positioning */
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        opacity: 0.5;
+      }
+
+      @media screen and (max-width: 1024px) { /* Specific to this particular image */
+        img.bg {
+          left: 50%;
+          margin-left: -512px;   /* 50% */
+        }
+      }
+
+      .landing:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0, 1);
+        -moz-transition: background .3s linear;
+        -webkit-transition: background .3s linear;
+        -o-transition: background .3s linear;
+        transition: background .3s linear;
+      }
+
+      .cover-container {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 200px;
+      }
+
+    </style>
+
+  </head>
+  <body role="document" style="zoom: 1;">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Socceropia</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#leaderboard">Leaderboard</a></li>
+          </ul>
+          <div class="profile">
+            <img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
+            Shinji Kim
+          </div>
+          <div>
+          </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="landing">
+      <img src="img/stadium.jpg" class="bg">
+    </div>
+    <div class="cover-container">
+      <div class="inner cover">
+        <h1 class="cover-heading">Who will rise on soccer's biggest stage?</h1>
+        <p class="lead">Predict the next match today!</p>
+        <p class="lead">
+          <a href="#" class="btn btn-lg btn-default">Play Now</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<script>
+  $('.upcoming-game').click(function() {
+    $('#forecast').modal('show');
+  });
+</script>  
+
+</body>
+</html>
