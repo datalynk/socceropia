@@ -2,7 +2,7 @@
     <h1>Upcoming Games</h1>
   </div>
   <div class="table-responsive">
-      <table class="table table-bordered table-striped upcoming" ng-repeat="(k, g) in games">
+      <table class="table table-bordered table-striped upcoming" ng-repeat="(k, g) in games | orderBy:-k">
           <tbody>
             <tr>
               <th colspan="7">{{k}}</th>

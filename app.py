@@ -150,8 +150,11 @@ def settings_js():
     settings = dict(url_root=request.url_root, debug_mode=DEBUG_MODE)
     return 'window.settings = ' + json.dumps(settings)
 
-@app.route('/user/autoregister', methods=['POST'])
+@app.route('/user/autoregister', methods=['GET', 'POST'])
 def autoregistration():
+    if request.method == 'GET':
+        return redirect('/')
+
     token = request.form['token']
     user_url = LOGINZA_URL % dict(token=token)
     response = requests.get(user_url)
