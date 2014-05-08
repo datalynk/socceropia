@@ -9,3 +9,9 @@ LOGINZA_URL = 'http://loginza.ru/api/authinfo?token=%(token)s'
 
 #
 DEBUG_MODE = True
+
+#
+SECRET_KEY = "wfsdfsdgw@#$ewfdsv143SDvwr!$fwfv#GRQVveofvrew=r()axc"
+
+#
+SQLALCHEMY_DATABASE_URI = 'sqlite:///forecaster.db'
