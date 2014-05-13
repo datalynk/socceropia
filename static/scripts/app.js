@@ -1,8 +1,7 @@
 var app = angular.module('forecast', ['ngRoute', 'ngResource', 'ui.bootstrap', 'chieffancypants.loadingBar']);
+app.constant('settings', window.settings);
 
-app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
-    $httpProvider.defaults.headers.common['X-TOKEN']= 'eyJhbGciOiJIUzI1NiIsImV4cCI6MTM5OTU0ODU3NiwiaWF0IjoxMzk5NTQ0OTc2fQ.eyJlbWFpbCI6InZhc2lsY292c2t5QGdtYWlsLmNvbSJ9.XD4Et83MsQEO_ALVkKdPmz5SRGVGgntYpmmXZTZBHuk';
-
+app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: '/static/views/landing.html',

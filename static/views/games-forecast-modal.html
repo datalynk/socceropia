@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h3 class="modal-title">Pick your team</h3>
+    <h3 class="modal-title">Pick winner or draw</h3>
 </div>
 <div class="modal-body">
     <div class="btn-group btn-group-lg">
@@ -17,18 +17,18 @@
 
 
       <h4>Final score prediction:</h4>
-      <form class="form-inline" name="NumbersForm">
+      <form class="form-inline">
         <div class="form-group">
-          <input type="number" class="form-control input-score center" id="teama-score" placeholder="{{game.host}}" ng-model="game.forecast.team_host_goals">
+            <select ng-options="score for score in team_host_range" ng-model="game.forecast.team_host_goals"></select>
         </div>
         :
         <div class="form-group">
-          <input type="number" class="form-control input-score center" id="teamb-score" placeholder="{{game.guest}}" ng-model="game.forecast.team_guest_goals">
+            <select ng-options="score for score in team_guest_range" ng-model="game.forecast.team_guest_goals"></select>
         </div>
       </form>
     </div>
 </div>
 <div class="modal-footer">
     <a href="" ng-click="cancel()" style="padding-right: 5px;">Cancel</a>
-    <button class="btn btn-success" ng-click="save()">Save my forecast</button>
+    <button class="btn btn-success" ng-click="save()" ng-disabled="!isScoreValid()">Save my forecast</button>
 </div>

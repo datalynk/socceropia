@@ -38,8 +38,9 @@ function GamesListCtrl($scope, $modal, $log, Prediction) {
   }
 
   $scope.iconByForecast = function(game) {
-    var forecast = game.forecast.forecast;
-    //$log.log($game); return '';
+    var forecast = game.forecast.forecast
+        ;
+
     if (forecast == 1) {
       return $scope.iconUrl(game.host);
     }
@@ -66,27 +67,47 @@ function GamesListCtrl($scope, $modal, $log, Prediction) {
       }
     });
 
-    modalInstance.result.then(function(game) {
+    modalInstance.result.then(function(modifiedGame) {
+        game.forecast = modifiedGame.forecast;
         Prediction.save({
-          game_id: game.id,
-          forecast: game.forecast.forecast,
-          team_host_goals: game.forecast.team_host_goals,
-          team_guest_goals: game.forecast.team_guest_goals
+          game_id: modifiedGame.id,
+          forecast: modifiedGame.forecast.forecast,
+          team_host_goals: modifiedGame.forecast.team_host_goals,
+          team_guest_goals: modifiedGame.forecast.team_guest_goals
         });
     });
   }
 
 };
 
-function ForecastCtrl($scope, $modalInstance, parentScope) {
-  var oldForecast;
-
-  $scope.game = parentScope.game;
+function ForecastCtrl($scope, $modalInstance, parentScope, settings) {
+  $scope.game = angular.copy(parentScope.game);
   $scope.iconUrl = parentScope.iconUrl;
-  oldForecast = angular.copy($scope.game.forecast);
+
+  $scope.isScoreValid = function() {
+    var forecast = $scope.game.forecast,
+        resultEnum = settings.gameResultEnum;
+        result = false
+        ;
+
+    switch (forecast.forecast) {
+      case resultEnum.TEAM_HOST_WIN:
+        result = forecast.team_host_goals > forecast.team_guest_goals;
+        break;
+      case resultEnum.TEAM_GUEST_WIN:
+        result = forecast.team_guest_goals > forecast.team_host_goals;
+        break;
+      case resultEnum.TEAM_DRAW:
+        result = forecast.team_host_goals == forecast.team_guest_goals;
+        break;
+      default:
+        result = false;
+    }
+
+    return result;
+  }
 
   $scope.cancel = function() {
-    $scope.game.forecast = oldForecast;
     $modalInstance.dismiss('close');
   }
 
@@ -94,7 +115,9 @@ function ForecastCtrl($scope, $modalInstance, parentScope) {
     $modalInstance.close($scope.game);
   }
 
+  $scope.team_host_range = _.range(0, 10);
+  $scope.team_guest_range = _.range(0, 10);
 }
 
 app.controller('GamesListCtrl', ['$scope', '$modal', '$log', 'Prediction', GamesListCtrl]);
-app.controller('ForecastCtlr', ['$scope', '$modalInstance', 'parentScope', ForecastCtrl]);
+app.controller('ForecastCtlr', ['$scope', '$modalInstance', 'parentScope', 'settings', ForecastCtrl]);
