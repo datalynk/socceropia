@@ -1,0 +1,19 @@
+{% extends "admin/layout.html" %}
+{% block body %}
+
+<h1 class="page-header">Add new user</h1>
+{% from "admin/_formhelper.html" import render_field %}
+<form method="POST">
+    {{ form.csrf_token }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.fullname) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+
+    <div>
+        <input type="submit" value="Create new user" class="btn btn-default btn-success" />
+        <a href="{{url_for('.users')}}">Cancel</a>
+    </div>
+</form>
+
+{% endblock %}

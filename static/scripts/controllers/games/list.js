@@ -27,7 +27,6 @@ function GamesListCtrl($scope, $modal, $log, Prediction) {
       })
       .pairs()
       .sortBy(function(p) {
-        console.log(p[1][0].timestamp);
         return p[1][0].timestamp;
       })
       .value();
