@@ -42,8 +42,8 @@ app.factory('Games', ['$resource', function($resource) {
         });
 }]);
 
-app.factory('Users', ['$resource', function($resource) {
-    return $resource('/api/user/:id', {
+app.factory('Leaders', ['$resource', function($resource) {
+    return $resource('/api/leaderboard/:id', {
             id: '@id'
         },
         {

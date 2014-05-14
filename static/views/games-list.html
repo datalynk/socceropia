@@ -2,13 +2,13 @@
     <h1>Upcoming Games</h1>
   </div>
   <div class="table-responsive">
-      <table class="table table-bordered table-striped upcoming" ng-repeat="(k, g) in games | orderBy:-k">
+      <table class="table table-bordered table-striped upcoming" ng-repeat="item in games">
           <tbody>
             <tr>
-              <th colspan="7">{{k}}</th>
+              <th colspan="7">{{item[0]}}</th>
               <th class="group">Your Bet</th>
             </tr>
-            <tr class="upcoming-game" ng-repeat="game in g" ng-click="openForecastDialog(game)">
+            <tr class="upcoming-game" ng-repeat="game in item[1]" ng-click="openForecastDialog(game)">
               <td class="game-time">{{game.time}} PM ET</td>
               <td class="weather"><img ng-src="{{g.game.weather}}" /></td>
               <td class="team-info flag"><img  ng-src="{{iconUrl(game.host)}}"></td>

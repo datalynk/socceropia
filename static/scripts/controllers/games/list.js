@@ -16,6 +16,7 @@ function GamesListCtrl($scope, $modal, $log, Prediction) {
           id: obj.game.id,
           host: obj.game.team_host.name,
           guest: obj.game.team_guest.name,
+          timestamp: m.format('X'),
           date: m.format('dddd MMMM D, YYYY'), 
           time: m.format('h:mm'),
           forecast: obj.forecast
@@ -23,6 +24,11 @@ function GamesListCtrl($scope, $modal, $log, Prediction) {
       })
       .groupBy(function(obj) {
         return obj.date
+      })
+      .pairs()
+      .sortBy(function(p) {
+        console.log(p[1][0].timestamp);
+        return p[1][0].timestamp;
       })
       .value();
 
