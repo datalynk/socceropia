@@ -1,19 +1,43 @@
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import and_
 from sqlalchemy.orm import relationship
+from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.security import Security, SQLAlchemyUserDatastore, \
+    UserMixin, RoleMixin, login_required
 
-TEAM_HOST_WIN = 1
-TEAM_GUEST_WIN = 2
-TEAM_DRAW = 3
 
 db = SQLAlchemy()
 
+class GameWinnerEnum(object):
+    TEAM_HOST_WIN = 1
+    TEAM_GUEST_WIN = 2
+    TEAM_DRAW = 3
+    
 
-class User(db.Model):
+class Role(db.Model, RoleMixin):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(80), unique=True)
+    description = db.Column(db.String(255))
+
+
+roles_users = db.Table('roles_users',
+        db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+        db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
+
+
+
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(60))
+    email = db.Column(db.String(255), unique=True)
+    fullname = db.Column(db.String(255))
+    password = db.Column(db.String(255))
+    active = db.Column(db.Boolean())
+    confirmed_at = db.Column(db.DateTime())
     score = db.Column(db.Integer, nullable=False, default=0)
+
+    roles = db.relationship('Role', secondary=roles_users,
+                            backref=db.backref('users', lazy='dynamic'))
+
+
 
 
 class Team(db.Model):
@@ -35,6 +59,7 @@ class Game(db.Model):
     team_host = relationship('Team', primaryjoin='Game.team_1==Team.id')
     team_guest = relationship('Team', primaryjoin='Game.team_2==Team.id')
     details = relationship('GameDetail')
+    result = relationship('GameResult', uselist=False)
 
     def to_dict(self):
         return {
@@ -65,10 +90,10 @@ class GameResult(db.Model):
 
     def get_game_result(self):
         if self.team_host_goals > self.team_guest_goals:
-            return TEAM_HOST_WIN
+            return GameWinnerEnum.TEAM_HOST_WIN
         elif self.team_host_goals < self.team_guest_goals:
-            return TEAM_GUEST_WIN
-        return TEAM_DRAW
+            return GameWinnerEnum.TEAM_GUEST_WIN
+        return GameWinnerEnum.TEAM_DRAW
 
 """
 @event.listens_for(scoped_session(db.session), 'before_flush')
@@ -160,3 +185,9 @@ def create_forecast(user_id, game_id, forecast, team_host_goals, team_guest_goal
 
     db.session.add(forecast_)
     db.session.commit()
+
+
+def get_leaderboard():
+    leaders = db.session.query(User.fullname, User.score).order_by(-User.score)\
+        .all()
+    return leaders

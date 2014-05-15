@@ -1,0 +1,7 @@
+{% macro game_result(game) %}
+    {% if game.result %}
+        <div>{{game.result.team_host_goals}} - {{game.result.team_guest_goals}}</div>
+    {% else %}
+        <a href="{{ url_for('.edit_game_result', game_id=game.id) }}">set result</a>
+    {% endif %}
+{% endmacro %}
