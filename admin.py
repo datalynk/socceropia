@@ -2,8 +2,8 @@ from collections import defaultdict
 from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from flask.ext.wtf import Form
 from sqlalchemy import func
-from wtforms import TextField, PasswordField, validators
-from models import db, User, Game, GameResult, Forecast, GameWinnerEnum
+from wtforms import TextField, PasswordField, validators, IntegerField, SelectField, DateTimeField, BooleanField
+from models import db, User, Game, GameResult, Forecast, GameWinnerEnum, Team
 
 
 class UserForm(Form):
@@ -17,8 +17,15 @@ class UserForm(Form):
 
 
 class GameResultForm(Form):
-    team_host_goals = TextField('Team Host goals', validators=[validators.Required()])
-    team_guest_goals = TextField('Team Guest goals', validators=[validators.Required()])
+    team_host_goals = IntegerField('Team Host goals', validators=[validators.Required()])
+    team_guest_goals = IntegerField('Team Guest goals', validators=[validators.Required()])
+
+
+class GameForm(Form):
+    team_1 = SelectField(u'Host team', description='Host team', coerce=int)
+    team_2 = SelectField(u'Guest team', description='Guest team', coerce=int)
+    date = DateTimeField(u'Date', description='Date time in UTC')
+    extra_time_allowed = BooleanField('Extra time allowed?')
 
 admin = Blueprint('admin_app', __name__)
 
@@ -67,9 +74,13 @@ def games():
     return render_template('admin/games.html', games=games, total_users=total_users, forecast_stat=forecast_stat)
 
 
-@admin.route('/games/add')
+@admin.route('/games/add', methods=['GET', 'POST'])
 def add_game():
-    return "Add game"
+    teams = [(t.id, t.name) for t in db.session.query(Team).order_by(Team.name)]
+    form = GameForm()
+    form.team_1.choices = teams
+    form.team_2.choices = teams
+    return render_template('admin/game_form.html', form=form)
 
 
 @admin.route('/games/edit/<int:game_id>')

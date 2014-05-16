@@ -2,7 +2,7 @@
 {% block body %}
 <h1 class="page-header">Games</h1>
 <div class="panel-body">
-    <a href="{{url_for('.add_user')}}">Add game</a>
+    <a href="{{url_for('.add_game')}}">Add game</a>
     <div class="table-responsive">
         {% from "admin/_game.html" import game_result %}
         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
