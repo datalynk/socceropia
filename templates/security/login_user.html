@@ -1,0 +1,45 @@
+{% extends "security/layout.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please Sign In</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+                        <fieldset>
+                            {% from "security/_macros.html" import render_field_with_errors, render_field %}
+                            {% include "security/_messages.html" %}
+
+                            {% if login_user_form.errors %}
+                            <ul class="list-unstyled">
+                                {% for field in login_user_form.errors %}
+                                    {% for error in login_user_form.errors[field] %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+
+                            {{ login_user_form.hidden_tag() }}
+                            {{ render_field(login_user_form.email) }}
+                            {{ render_field(login_user_form.password) }}
+                            {{ render_field(login_user_form.next) }}
+                            <div class="checkbox">
+                                <label>
+                                    {{ login_user_form.remember }} Remember me <a href="{{ url_for_security('forgot_password') }}">Forgot password</a>
+                                </label>
+                            </div>
+                            {{ login_user_form.submit(class_="btn btn-lg btn-success btn-block") }}
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

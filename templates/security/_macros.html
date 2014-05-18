@@ -1,0 +1,22 @@
+{% macro render_field_with_errors(field) %}
+    {% if field.errors %}
+        <ul class="list-unstyled">
+        {% for error in field.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="form-group">
+        {{ field.label }}
+        {{ field(class_="form-control", **kwargs)|safe }}
+    </div>
+{#<p>
+    {{ field.label }} {{ field(**kwargs)|safe }}
+  </p>#}
+{% endmacro %}
+
+{% macro render_field(field) %}
+    <div class="form-group">
+        {{ field(class_="form-control", placeholder=field.label.text, **kwargs)|safe }}
+    </div>
+{% endmacro %}
