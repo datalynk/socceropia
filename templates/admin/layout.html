@@ -7,6 +7,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/admin/js/plugins/pickmeup/css/pickmeup.min.css" rel="stylesheet">
     <link href="/static/admin/css/sb-admin.css" rel="stylesheet">
 </head>
 
@@ -300,8 +301,13 @@
     <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/static/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/static/admin/js/plugins/pickmeup/js/jquery.pickmeup.min.js"></script>
     <script src="/static/admin/js/sb-admin.js"></script>
-
+    <script lang="javascript">
+        $(function() {
+            {% block inline_javascript %}{% endblock %}
+        });
+    </script>
 </body>
 
 </html>

@@ -33,3 +33,9 @@ class PredictionAPI(Resource):
         args = parser.parse_args()
 
         create_forecast(user.id, args.game_id, args.forecast, args.team_host_goals, args.team_guest_goals)
+
+
+class LeaderboardAPI(Resource):
+    def get(self):
+        objects = get_leaderboard()
+        return jsonify(dict(objects=objects))

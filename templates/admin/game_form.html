@@ -14,5 +14,8 @@
         <a href="{{url_for('.games')}}">Cancel</a>
     </div>
 </form>
+{% endblock %}
 
+{% block inline_javascript %}
+$('#date').pickmeup({'format': 'y-m-d H:M:S'});
 {% endblock %}

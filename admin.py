@@ -1,6 +1,7 @@
 from collections import defaultdict
 from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from flask.ext.wtf import Form
+from flask.ext.security import login_required
 from sqlalchemy import func
 from wtforms import TextField, PasswordField, validators, IntegerField, SelectField, DateTimeField, BooleanField
 from models import db, User, Game, GameResult, Forecast, GameWinnerEnum, Team
@@ -30,6 +31,7 @@ class GameForm(Form):
 admin = Blueprint('admin_app', __name__)
 
 @admin.route('/')
+@login_required
 def index():
     return render_template('admin/index.html')
 

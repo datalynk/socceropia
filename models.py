@@ -95,15 +95,6 @@ class GameResult(db.Model):
             return GameWinnerEnum.TEAM_GUEST_WIN
         return GameWinnerEnum.TEAM_DRAW
 
-"""
-@event.listens_for(scoped_session(db.session), 'before_flush')
-def game_result_inserted_listener(session, flush_context, instances):
-    import pprint
-    pprint.pprint(instances)
-    #update_score(game_result=target)
-
-event.listen(GameResult, 'append', game_result_inserted_listener)
-"""
 
 class Forecast(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -124,24 +115,6 @@ class Forecast(db.Model):
             'team_host_goals': self.team_host_goals,
             'team_guest_goals': self.team_guest_goals
         }
-
-
-class BaseRepository(object):
-
-    __model_class__ = None
-
-    def all(self):
-        return self.session().query(self.__model_class__).all()
-
-    def get_by_id(self, id):
-        return self.session().query(self.__model_class__).filter_by(id == id).one()
-
-    def save(self, entry):
-        return self.session().add(entry)
-
-    @staticmethod
-    def session():
-        return db.session
 
 
 def init_db(app):
