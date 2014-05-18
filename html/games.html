@@ -77,6 +77,7 @@
 
       .modal-body {
         text-align: center;
+
       }
 
       .input-score {
@@ -85,9 +86,38 @@
 
       .prediction {
         margin-top: 30px;
+        margin-bottom: 30px;
+      }
+
+      #chart {
+        margin: 0 auto;
       }
     </style>
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Winning Team', 'Votes', {role: 'style'}],
+          ['Brazil Win',     11, 'green'],
+          ['Croatia Win',      2, 'red'],
+          ['Draw',  2, 'orange']
+        ]);
+
+        var options = {
+          title: 'Socceropia Predictions:',
+          titleTextStyle: {fontSize: 18, bold: false},
+          legend: { position: "none" },
+          width: 500,
+          height: 200,
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart'));
+        chart.draw(data, options);
+      }
+    </script>
   </head>
   <body role="document" style="zoom: 1;">
 
@@ -246,6 +276,7 @@
             <h4 class="modal-title">Forecast!</h4>
           </div>
           <div class="modal-body">
+            
             <h4>Pick your team:</h4>
             <div class="btn-group btn-group-lg">
                 <button type="button" class="btn btn-default forecast">
@@ -271,6 +302,8 @@
                 </div>
               </form>
             </div>
+
+            <div id="chart" style="width: 500px; height: 200px;"></div>
 
           </div>
           <div class="modal-footer">

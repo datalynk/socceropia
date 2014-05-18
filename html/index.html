@@ -194,10 +194,21 @@
         color: #eee;
         text-shadow: 1px 1px 3px #000;
         float: right;
+        width: 170px;
       }
 
       .navbar {
         background: rgba(0,0,0,0.1);
+      }
+
+      .dropdown-menu {
+        position: relative;
+        margin: 17px 0 0;
+        opacity: 0.8;
+      }
+
+      .dropdown-menu a {
+        text-shadow: none;
       }
 
     </style>
@@ -225,8 +236,11 @@
             <a href="#rules">Rules</a>
           </div>
           <div class="profile">
-            <img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
-            Shinji K.
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
+            Shinji K. <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Logout</a></li>
+            </ul>
           </div>
         </div>
       </div>
