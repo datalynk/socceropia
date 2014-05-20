@@ -1,15 +1,21 @@
 from flask.ext.wtf import Form
 from wtforms import TextField, PasswordField, IntegerField, SelectField, DateTimeField, BooleanField, validators
 
-
 class UserForm(Form):
     email = TextField('Email', validators=[validators.Required()])
     fullname = TextField('Fullname', validators=[validators.Required()])
+
+
+class UserRegistrationForm(UserForm):
     password = PasswordField('Password', [
         validators.Required(),
         validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Repeat Password')
+
+
+class UserEditForm(UserForm):
+    score = IntegerField('Score', validators=[validators.InputRequired()])
 
 
 class GameResultForm(Form):
