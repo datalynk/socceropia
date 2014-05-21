@@ -19,8 +19,8 @@ class UserEditForm(UserForm):
 
 
 class GameResultForm(Form):
-    team_host_goals = IntegerField('Team Host goals', validators=[validators.Required()])
-    team_guest_goals = IntegerField('Team Guest goals', validators=[validators.Required()])
+    team_host_goals = IntegerField('Team Host goals', validators=[validators.InputRequired()], default=0)
+    team_guest_goals = IntegerField('Team Guest goals', validators=[validators.InputRequired()], default=0)
 
 
 class GameForm(Form):

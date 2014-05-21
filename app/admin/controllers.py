@@ -4,7 +4,7 @@ from flask import redirect, render_template, abort, flash, url_for
 from flask.ext.security import login_required, registerable
 
 from . import admin
-from ..models import db, Game, User, Forecast, Team, GameWinnerEnum
+from ..models import db, Game, User, Forecast, Team, GameResult, GameWinnerEnum
 
 
 @admin.route('/users/add', methods=['GET', 'POST'])
@@ -58,16 +58,17 @@ def edit_game_result(game_id):
         abort("Game result already exists")
 
     if form.validate_on_submit():
-        result = forms.GameResult(game_id=game_id)
+        result = GameResult(game_id=game_id)
         form.populate_obj(result)
         db.session.add(result)
 
-        forecasts = db.session.query(Forecast).filter(Forecast.game_id == game_id).all()
+        """"forecasts = db.session.query(Forecast).filter(Forecast.game_id == game_id).all()
         for forecast in forecasts:
             score = calculate_score(forecast, result)
             forecast.user.score += score
-
+        """""
         db.session.commit()
+
 
         flash("Results were saved.")
         return redirect(url_for('.games'))
