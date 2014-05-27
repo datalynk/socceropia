@@ -17,7 +17,7 @@
         };
 
         return {
-            user: makeBaseApi('user'), //$resource('/api/user'),
+            user: makeBaseApi('user'),
             games: makeBaseApi('games'),
             leaders: makeBaseApi('leaderboard'),
             forecast: makeBaseApi('forecast'),

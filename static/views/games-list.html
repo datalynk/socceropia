@@ -1,30 +1,54 @@
+<div class="page-header">
+  <h1>Upcoming Games</h1>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped upcoming" ng-repeat="item in games">
+        <tbody>
+          <tr>
+            <th colspan="7">{{item[0]}}</th>
+            <th class="group">Your Bet</th>
+          </tr>
+          <tr class="upcoming-game" ng-repeat="game in item[1]" ng-click="openForecastDialog(game)">
+            <td class="game-time">{{game.time}} PM ET</td>
+            <td class="weather"><img ng-src="{{g.game.weather}}" /></td>
+            <td class="team-info flag"><img  ng-src="{{iconUrl(game.host)}}"></td>
+            <td class="team-info teama">{{game.host}}</td>
+            <td class="team-info vs">vs.</td>
+            <td class="team-info teamb">{{game.guest}}</td>
+            <td class="team-info flag"><img ng-src="{{iconUrl(game.guest)}}"></td>
+            <td class="group flag">
+              <div user-forecast="game"></div>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+<div ng-if="pastGames">
   <div class="page-header">
-    <h1>Upcoming Games</h1>
+    <h1>Past Games</h1>
   </div>
   <div class="table-responsive">
-      <table class="table table-bordered table-striped upcoming" ng-repeat="item in games">
+      <table class="table table-bordered table-striped" ng-repeat="item in pastGames">
           <tbody>
             <tr>
-              <th colspan="7">{{item[0]}}</th>
+              <th colspan="6">{{item[0]}}</th>
               <th class="group">Your Bet</th>
+              <th class="points">Points Won</th>
             </tr>
-            <tr class="upcoming-game" ng-repeat="game in item[1]" ng-click="openForecastDialog(game)">
+            <tr class="upcoming-game" ng-repeat="game in item[1]">
               <td class="game-time">{{game.time}} PM ET</td>
-              <td class="weather"><img ng-src="{{g.game.weather}}" /></td>
               <td class="team-info flag"><img  ng-src="{{iconUrl(game.host)}}"></td>
               <td class="team-info teama">{{game.host}}</td>
-              <td class="team-info vs">vs.</td>
+              <td class="team-info vs"><h4>1 - 0</h4></td>
               <td class="team-info teamb">{{game.guest}}</td>
               <td class="team-info flag"><img ng-src="{{iconUrl(game.guest)}}"></td>
               <td class="group flag">
-                <div ng-if="game.forecast.forecast">
-                  <img ng-src="{{iconByForecast(game)}}" /> 
-                  <span>{{game.forecast.team_host_goals}} - {{game.forecast.team_guest_goals}}</span>
-                </div>
+                <div user-forecast="game"></div>
               </td>
+              <td class="points" ng-bind="game.forecast.points"></td>
             </tr>
           </tbody>
       </table>
-
   </div>
 </div>

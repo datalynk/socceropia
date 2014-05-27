@@ -1,211 +1,222 @@
-  td, th {
-    vertical-align: middle !important;
-  }
-  .flag img {
-    height: 40px;
-  }
-  .flag, .weather {
-    width: 70px;
-  }
-  .team-info {
-    border: 0 !important;
-  }
-  .vs {
-    text-align: center;
-    width: 100px;
-  }
+td, th {
+vertical-align: middle !important;
+}
+.flag img {
+height: 40px;
+}
+.flag, .weather {
+width: 70px;
+}
+.team-info {
+border: 0 !important;
+}
+.vs {
+text-align: center;
+width: 100px;
+}
 
-  .teamb {
-    text-align: right;
-  }
+.teamb {
+text-align: right;
+}
 
-  .teama, .teamb {
-    width: 20%;
-  }
+.teama, .teamb {
+width: 20%;
+}
 
-  .weather, .group, .points, .score {
-    text-align: center;
-  }
+.weather, .group, .points, .score {
+text-align: center;
+}
 
-  .game-time {
-    width: 125px;
-  }
+.game-time {
+width: 125px;
+}
 
-  .total tbody>tr>th {
-    background-color: #48C;
-  }
+.total tbody>tr>th {
+background-color: #48C;
+}
 
-  .right {
-    text-align: right;
-  }
+.right {
+text-align: right;
+}
 
-  .forecast {
-    text-align: center;
-    height: 100px;
-    width: 150px;
-  }
+.forecast {
+text-align: center;
+height: 100px;
+width: 150px;
+}
 
-  .upcoming tbody>tr:hover>td {
-    background-color: #16A085;
-    color:#eff;
-  }
+.upcoming tbody>tr:hover>td {
+background-color: #16A085;
+color:#eff;
+}
 
-  .upcoming .table-striped tbody tr:nth-child(odd):hover td {
-    background-color: #16A085;
-    color:#eff;
-  }
+.upcoming .table-striped tbody tr:nth-child(odd):hover td {
+background-color: #16A085;
+color:#eff;
+}
 
-  .modal-body {
-    text-align: center;
-  }
+.modal-body {
+text-align: center;
+}
 
-  .input-score {
-    width: 80px !important;
-  }
+.input-score {
+width: 80px !important;
+}
 
-  .prediction {
-    margin-top: 30px;
-  }
+.prediction {
+margin-top: 30px;
+}
 
-  .profile img {
-    width: 30px;
-    margin-right: 5px;
-  }
-
-
-  .leaderboard-rank, .leaderboard-points {
-    width: 80px;
-    text-align: center;
-  }
-
-  .lead {
-    margin-top: 30px;
-  }
+.profile img {
+width: 30px;
+margin-right: 5px;
+}
 
 
-  img.bg {
-    /* Set rules to fill background */
-    min-height: 100%;
-    min-width: 1024px;
+.leaderboard-rank, .leaderboard-points {
+width: 80px;
+text-align: center;
+}
 
-    /* Set up proportionate scaling */
-    width: 100%;
-    height: auto;
-
-    /* Set up positioning */
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    opacity: 0.8;
-  }
-
-  @media screen and (max-width: 1024px) { /* Specific to this particular image */
-    img.bg {
-      left: 50%;
-      margin-left: -512px;   /* 50% */
-    }
-  }
-
-  .landing:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0, 1);
-    -moz-transition: background .3s linear;
-    -webkit-transition: background .3s linear;
-    -o-transition: background .3s linear;
-    transition: background .3s linear;
-  }
-
-  .cover-container {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: #fff;
-    width: 60%;
-    margin: 0 auto;
-    margin-top: 200px;
-  }
-
-  .center {
-    text-align: center;
-  }
-
-     .navbar-nav, .profile {
-        font-family: 'Lato', sans-serif;
-        font-size: 21px;
-        font-style: italic;
-        color: #eee;
-        text-shadow: 1px 1px 3px #000;
-      }
-
-      .navbar {
-        background: rgba(0,0,0,0.1);
-      }
-
-      .navbar a {
-        font-family: 'Lato', sans-serif;
-        font-size: 21px;
-        font-style: italic;
-        color: #E1FF81;
-        padding: 10px 20px;
-        text-shadow: 1px 1px 3px #000;
-      }
-
-      .navbar-brand img {
-        margin-top: 10px;
-      }
-
-      .navbar-nav, .profile {
-        margin-top: 30px;
-      }
+.lead {
+margin-top: 30px;
+}
 
 
-      body {
-        padding-top: 65px;
-        background: url('http://images.forwallpaper.com/files/thumbs/preview/12/128104__grass-field-soccer-ball_p.jpg') no-repeat center center fixed;
-        background-size: cover;
-      }
+img.bg {
+/* Set rules to fill background */
+min-height: 100%;
+min-width: 1024px;
+
+/* Set up proportionate scaling */
+width: 100%;
+height: auto;
+
+/* Set up positioning */
+position: fixed;
+top: 0;
+left: 0;
+
+opacity: 0.8;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+img.bg {
+left: 50%;
+margin-left: -512px;   /* 50% */
+}
+}
+
+.landing:before {
+content: "";
+display: block;
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background: rgba(0,0,0, 1);
+-moz-transition: background .3s linear;
+-webkit-transition: background .3s linear;
+-o-transition: background .3s linear;
+transition: background .3s linear;
+}
+
+.cover-container {
+position: relative;
+z-index: 2;
+text-align: center;
+color: #fff;
+width: 60%;
+margin: 0 auto;
+margin-top: 200px;
+}
+
+.center {
+text-align: center;
+}
+
+.navbar-nav, .profile {
+font-family: 'Lato', sans-serif;
+font-size: 21px;
+font-style: italic;
+color: #eee;
+text-shadow: 1px 1px 3px #000;
+}
+
+.navbar {
+background: rgba(0,0,0,0.1);
+}
+
+.navbar a {
+font-family: 'Lato', sans-serif;
+font-size: 21px;
+font-style: italic;
+color: #E1FF81;
+padding: 10px 20px;
+text-shadow: 1px 1px 3px #000;
+}
+
+.navbar-brand img {
+margin-top: 10px;
+}
+
+.navbar-nav, .profile {
+margin-top: 30px;
+}
 
 
-      h1 {
-        color: white;
-      }
+body {
+padding-top: 65px;
+background: url('http://images.forwallpaper.com/files/thumbs/preview/12/128104__grass-field-soccer-ball_p.jpg') no-repeat center center fixed;
+background-size: cover;
+}
 
-      tbody>tr>td {
-        background-color: #fff;
-        color:#333;
-      }
 
-      .page-body {
-        color: #eee;
-      }
+h1 {
+color: white;
+}
 
-      .powered-by img {
-        margin-right: 15px;
-      }
+tbody>tr>td {
+background-color: #fff;
+color:#333;
+}
 
-      .powered-by {
-        background-color: #fff;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        margin-bottom: 30px;
-      }
+.page-body {
+color: #eee;
+}
 
-      .profile {
-        font-family: 'Lato', sans-serif;
-        font-size: 21px;
-        font-style: italic;
-        color: #eee;
-        text-shadow: 1px 1px 3px #000;
-        float: right;
-      }
+.powered-by img {
+margin-right: 15px;
+}
 
-      .navbar {
-        height: 90px;
-      }
+.powered-by {
+background-color: #fff;
+padding-top: 20px;
+padding-bottom: 20px;
+margin-bottom: 30px;
+}
+
+.profile {
+font-family: 'Lato', sans-serif;
+font-size: 21px;
+font-style: italic;
+color: #eee;
+text-shadow: 1px 1px 3px #000;
+float: right;
+width: 170px;
+}
+
+.navbar {
+background: rgba(0,0,0,0.1);
+}
+
+.dropdown-menu {
+position: relative;
+margin: 17px 0 0;
+opacity: 0.8;
+}
+
+.dropdown-menu a {
+text-shadow: none;
+}

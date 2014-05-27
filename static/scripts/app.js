@@ -1,79 +1,67 @@
-var app = angular.module('forecast', ['ngRoute', 'ngResource', 'ui.bootstrap', 'chieffancypants.loadingBar']);
+var app = angular.module('forecast', [
+    'forecastApi',
+    'forecastMock',
+    'ngRoute',
+    'ui.bootstrap',
+    'chieffancypants.loadingBar']);
+
+app.constant('ICONS_URL_BASE', 'icons/48');
+
+app.directive('soFlag', ['ICONS_URL_BASE', function(ICONS_URL_BASE) {
+    return {
+        restrict: 'E',
+        scope: {
+            name: "=countryName"
+        },
+        link: function(scope, element, attrs) {
+            var countryName = (scope.name || attrs.countryName || '').replace(' ', '-');
+            var imgUrl = ICONS_URL_BASE + '/' + countryName + '.png';
+            element.append($('<img />').attr('src', imgUrl));
+        }
+    }
+}]);
+
+app.directive('soForecastIcon', function() {
+    return {
+        restrict: 'E',
+        scope: {
+            forecast: "=forecast",
+            game: "=game"
+        },
+        templateUrl: 'directive/forecast-icon.html'
+    }
+});
+
+app.directive('userForecast', function() {
+    return {
+        restrict: 'A',
+        scope: {
+            game: "=userForecast",
+        },
+        templateUrl: 'directive/user-forecast.html'
+    }
+});
+
 app.constant('settings', window.settings);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '/static/views/landing.html',
+            templateUrl: 'views/landing.html',
             controller: 'MainCtrl',
         })
         .when('/games', {
-            templateUrl: '/static/views/games-list.html',
+            templateUrl: 'views/games-list.html',
             controller: 'GamesListCtrl'
         })
         .when('/leaderboard', {
-            templateUrl: '/static/views/leaders-list.html',
+            templateUrl: 'views/leaders-list.html',
             controller: 'LeadersListCtrl'
         })
         .when('/rules', {
-            templateUrl: '/static/views/rules.html'
+            templateUrl: 'views/rules.html'
         })
         .otherwise({
             redirectTo: '/'
-        });
-}]);
-
-
-// modules
-angular.module('_', []).factory('_', function() {
-    return window._;
-});
-
-// resources
-app.factory('Games', ['$resource', function($resource) {
-    return $resource('/api/games/:id', {
-            id: '@id'
-        },
-        {
-            'query': {
-                method: 'GET',
-                isArray:false
-            }
-        });
-}]);
-
-app.factory('Leaders', ['$resource', function($resource) {
-    return $resource('/api/leaderboard/:id', {
-            id: '@id'
-        },
-        {
-            'query': {
-                method: 'GET',
-                isArray:false
-            }
-        });
-}]);
-
-app.factory('Forecast', ['$resource', function($resource) {
-    return $resource('/api/forecast/:id', {
-            id: '@id'
-        },
-        {
-            'query': {
-                method: 'GET',
-                isArray:false
-            }
-        });
-}]);
-
-app.factory('Prediction', ['$resource', function($resource) {
-    return $resource('/api/prediction/:id', {
-            id: '@id'
-        },
-        {
-            'query': {
-                method: 'GET',
-                isArray:false
-            }
         });
 }]);

@@ -10,11 +10,11 @@
     <title>Socceropia</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/static/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="/static/bower_components/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet" />
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="bower_components/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Lato:400,400italic' rel='stylesheet' type='text/css'>
-    <link href="/static/css/styles.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
 
   </head>
   <body ng-app="forecast">
@@ -26,10 +26,8 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="/static/img/logo-white.png"></a>
+          <a class="navbar-brand" href="#"><img src="img/logo-white.png"></a>
         </div>
         <div class="navbar-collapse collapse" ng-controller="HeaderCtrl">
             <div class="nav navbar-nav">
@@ -38,13 +36,17 @@
                 <a href="/#/leaderboard">Leaderboard</a>
                 <a href="/#/rules">Rules</a>
             </div>
+
             <div class="profile" ng-if="!user.anonymous">
-                <a href="/logout">
-                    <img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
-                    {{user.name}}
-                </a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
+                <span ng-bind="user.name"></span> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="logout">Logout</a></li>
+                </ul>
             </div>
-        </div><!--/.nav-collapse -->
+
+        </div>
       </div>
     </div>
 
@@ -54,21 +56,26 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/static/bower_components/angular/angular.min.js"></script>
-    <script src="/static/bower_components/angular-route/angular-route.min.js"></script>
-    <script src="/static/bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="/static/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-    <script src="/static/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="/static/bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
-    <script src="/static/bower_components/underscore/underscore.js"></script>
-    <script src="/static/bower_components/momentjs/min/moment.min.js"></script>
-    <script src="/settings.js"></script>
-    <script src="/static/scripts/app.js"></script>
-    <script src="/static/scripts/controllers/main.js"></script>
-    <script src="/static/scripts/controllers/games/list.js"></script>
-    <script src="/static/scripts/controllers/leaders/list.js"></script>
-    <script src="/static/scripts/controllers/header.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/momentjs/min/moment.min.js"></script>
+
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="scripts/mock.js"></script>
+    
+    <!--<script src="/settings.js"></script>-->
+    <script src="scripts/api.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/games/list.js"></script>
+    <script src="scripts/controllers/leaders/list.js"></script>
+    <script src="scripts/controllers/header.js"></script>
 
 </body>
 </html>

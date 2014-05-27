@@ -5,7 +5,7 @@ function MainCtrl($scope, $location, $modal, settings) {
   
   $scope.signinForm = function() {
     var $modalInstance = $modal.open({
-      templateUrl: '/static/views/signin.html'
+      templateUrl: 'views/signin.html'
     });
   }
 

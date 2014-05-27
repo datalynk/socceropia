@@ -1,13 +1,11 @@
 var app = angular.module('forecast');
 
-ICONS_URL_BASE = '/static/icons/48';
+ICONS_URL_BASE = 'icons/48';
 
-function GamesListCtrl($scope, $modal, $log, Prediction) {
-  var p = Prediction.query(function() {
-    var objects = p.objects,
-        grouped;
-
-    grouped = _.chain(objects)
+function GamesListCtrl($scope, $modal, $log, api) {
+  
+  function groupGames(games) {
+    return _.chain(games)
       .map(function(obj) {
         var d = new Date(obj.game.date),
             m = moment(d);
@@ -19,8 +17,11 @@ function GamesListCtrl($scope, $modal, $log, Prediction) {
           timestamp: m.format('X'),
           date: m.format('dddd MMMM D, YYYY'), 
           time: m.format('h:mm'),
-          forecast: obj.forecast
+          forecast: obj.forecast,
+          result: obj.result,
+          locked: obj.game.locked
         };
+
       })
       .groupBy(function(obj) {
         return obj.date
@@ -30,8 +31,21 @@ function GamesListCtrl($scope, $modal, $log, Prediction) {
         return p[1][0].timestamp;
       })
       .value();
+  }
 
-    $scope.games = grouped;
+  var p = api.prediction.query(function() {
+    var objects = p.data.objects,
+        arr, upcoming, past;
+
+    arr = _.partition(objects, function(e) {
+      return e.result != null;
+    });
+
+    past = groupGames(arr[0]);
+    upcoming = groupGames(arr[1]);
+
+    $scope.games = upcoming;
+    $scope.pastGames = past;
 
   });
 
@@ -59,8 +73,12 @@ function GamesListCtrl($scope, $modal, $log, Prediction) {
   }
 
   $scope.openForecastDialog = function(game) {
+    if (game.locked) {
+      return;
+    }
+
     var modalInstance = $modal.open({
-      templateUrl: '/static/views/games-forecast-modal.html',
+      templateUrl: 'views/games-forecast-modal.html',
       controller: ForecastCtrl,
       resolve: {
         parentScope: function() {
@@ -74,7 +92,7 @@ function GamesListCtrl($scope, $modal, $log, Prediction) {
 
     modalInstance.result.then(function(modifiedGame) {
         game.forecast = modifiedGame.forecast;
-        Prediction.save({
+        api.prediction.save({
           game_id: modifiedGame.id,
           forecast: modifiedGame.forecast.forecast,
           team_host_goals: modifiedGame.forecast.team_host_goals,
@@ -91,7 +109,11 @@ function ForecastCtrl($scope, $modalInstance, parentScope, settings) {
 
   $scope.isScoreValid = function() {
     var forecast = $scope.game.forecast,
-        resultEnum = settings.gameResultEnum;
+        resultEnum = {
+          TEAM_HOST_WIN: 1,
+          TEAM_GUEST_WIN: 2,
+          TEAM_DRAW: 3
+        },
         result = false
         ;
 
@@ -124,5 +146,5 @@ function ForecastCtrl($scope, $modalInstance, parentScope, settings) {
   $scope.team_guest_range = _.range(0, 10);
 }
 
-app.controller('GamesListCtrl', ['$scope', '$modal', '$log', 'Prediction', GamesListCtrl]);
+app.controller('GamesListCtrl', ['$scope', '$modal', '$log', 'api', GamesListCtrl]);
 app.controller('ForecastCtlr', ['$scope', '$modalInstance', 'parentScope', 'settings', ForecastCtrl]);
