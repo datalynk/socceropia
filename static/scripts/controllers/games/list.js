@@ -17,7 +17,7 @@ function GamesListCtrl($scope, $modal, $log, api) {
           timestamp: m.format('X'),
           date: m.format('dddd MMMM D, YYYY'), 
           time: m.format('h:mm'),
-          forecast: obj.forecast,
+          forecast: obj.forecast || {},
           result: obj.result,
           locked: obj.game.locked
         };

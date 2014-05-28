@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-
     <title>Socceropia</title>
 
     <!-- Bootstrap core CSS -->
@@ -32,12 +31,12 @@
         <div class="navbar-collapse collapse" ng-controller="HeaderCtrl">
             <div class="nav navbar-nav">
                 <a href="#">Home</a>
-                <a href="/#/games" ng-if="!user.anonymous">Games</a>
-                <a href="/#/leaderboard">Leaderboard</a>
-                <a href="/#/rules">Rules</a>
+                <a href="#/games" ng-hide="user.is_anonymous">Games</a>
+                <a href="#/leaderboard">Leaderboard</a>
+                <a href="#/rules">Rules</a>
             </div>
 
-            <div class="profile" ng-if="!user.anonymous">
+            <div class="profile" ng-hide="user.is_anonymous">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
                 <span ng-bind="user.name"></span> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -66,9 +65,11 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/momentjs/min/moment.min.js"></script>
 
+    <!--
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="scripts/mock.js"></script>
-    
+    -->
+
     <!--<script src="/settings.js"></script>-->
     <script src="scripts/api.js"></script>
     <script src="scripts/app.js"></script>

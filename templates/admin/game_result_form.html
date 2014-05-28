@@ -3,23 +3,18 @@
 
 <h1 class="page-header">Set game result</h1>
 {% from "admin/_formhelper.html" import render_field %}
-<form method="POST" class="form-inline">
+
+<form method="POST">
     {{ form.csrf_token }}
-    <div class="form-group">
-        <label>{{ game.team_host.name }}</label>
-        {{ form.team_host_goals }}
-    </div>
-    <div class="form-group">
-        {{ form.team_guest_goals }}
-        <label>{{ game.team_guest.name }}</label>
-    </div>
+    {{ render_field(form.team_host_goals) }}
+    {{ render_field(form.team_guest_goals) }}
 
     <div class="form-group">
         <button type="submit" class="btn btn-default">Save Results</button>
+         <a href="{{url_for('.games')}}">Cancel</a>
     </div>
 
 </form>
 
- <a href="{{url_for('.games')}}">Cancel</a>
 
 {% endblock %}

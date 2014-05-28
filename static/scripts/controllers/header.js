@@ -1,7 +1,7 @@
 var app = angular.module('forecast');
 
 function HeaderController($scope, $location, api) {
-    $scope.user = {name: 'abc'};
+    $scope.user = {is_anonymous: true};
     
     var q = api.user.query().$promise;
     q.then(function(response) {

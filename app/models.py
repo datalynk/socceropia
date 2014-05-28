@@ -1,3 +1,4 @@
+import datetime
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext import security
 
@@ -20,8 +21,13 @@ class User(db.Model, security.UserMixin):
     fullname = db.Column(db.String(255))
     password = db.Column(db.String(255))
     active = db.Column(db.Boolean())
-    confirmed_at = db.Column(db.DateTime())
     score = db.Column(db.Integer, nullable=False, default=0)
+    confirmed_at = db.Column(db.DateTime())
+    last_login_at = db.Column(db.DateTime())
+    current_login_at = db.Column(db.DateTime())
+    last_login_ip = db.Column(db.String(40))
+    current_login_ip = db.Column(db.String(40))
+    login_count = db.Column(db.Integer)
 
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
@@ -49,6 +55,10 @@ class Game(db.Model):
     team_guest = db.relationship('Team', primaryjoin='Game.team_2==Team.id')
     details = db.relationship('GameDetail')
     result = db.relationship('GameResult', uselist=False)
+
+    def is_forecast_allowed(self):
+        five_min_before = self.date - datetime.timedelta(seconds=300)
+        return five_min_before > datetime.datetime.now()
 
 
 class GameDetail(db.Model):

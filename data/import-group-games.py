@@ -1,7 +1,7 @@
 import csv
 import datetime
 from collections import namedtuple
-from app import Game, GameDetail, Team, db
+from app_old import Game, GameDetail, Team, db
 
 csvrow = namedtuple('Row', 'date,time,team_a,team_b,city')
 

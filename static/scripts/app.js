@@ -1,6 +1,5 @@
 var app = angular.module('forecast', [
     'forecastApi',
-    'forecastMock',
     'ngRoute',
     'ui.bootstrap',
     'chieffancypants.loadingBar']);

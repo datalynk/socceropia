@@ -2,8 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 import datetime
-from app import Game, Team, User, Forecast, GameResult, db
-from app import TEAM_HOST_WIN
+from app_old import Game, Team, User, Forecast, GameResult, db
+from app_old import TEAM_HOST_WIN
 
 User.query.delete()
 Team.query.delete()

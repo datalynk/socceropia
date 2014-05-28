@@ -7,11 +7,9 @@
     {{ form.csrf_token }}
     {{ render_field(form.email) }}
     {{ render_field(form.fullname) }}
-    {{ render_field(form.password) }}
-    {{ render_field(form.confirm) }}
-
+    {{ render_field(form.score) }}
     <div>
-        <input type="submit" value="Create new user" class="btn btn-default btn-success" />
+        <input type="submit" value="Update" class="btn btn-default btn-success" />
         <a href="{{url_for('.users')}}">Cancel</a>
     </div>
 </form>
