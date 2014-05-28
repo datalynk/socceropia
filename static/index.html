@@ -37,10 +37,10 @@
             </div>
 
             <div class="profile" ng-hide="user.is_anonymous">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://avatars0.githubusercontent.com/u/1077481?s=140">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img ng-src="{{user.avatar_url}}">
                 <span ng-bind="user.name"></span> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Settings</a></li>
+                    <!--<li><a href="#">Settings</a></li>-->
                     <li><a href="logout">Logout</a></li>
                 </ul>
             </div>
