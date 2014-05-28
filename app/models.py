@@ -1,3 +1,4 @@
+import hashlib
 import datetime
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext import security
@@ -31,6 +32,13 @@ class User(db.Model, security.UserMixin):
 
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
+
+
+    def get_avatar_url(self):
+        hash = hashlib.md5(self.email).hexdigest()
+        return "http://www.gravatar.com/avatar/" + hash
+
+
 
 
 class GameWinnerEnum(object):

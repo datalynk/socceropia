@@ -27,9 +27,13 @@ def user_required(fn):
 
 class UserAPI(Resource):
     def get(self):
+        if current_user.is_anonymous():
+            return dict(is_anonymous=True)
+
         return success({
-            "name": current_user.fullname if not current_user.is_anonymous() else '',
-            "is_anonymous": current_user.is_anonymous()
+            "avatar_url": current_user.get_avatar_url(),
+            "name": current_user.fullname,
+            "is_anonymous": False
         })
 
 
