@@ -116,7 +116,8 @@ class LeaderBoardAPI(Resource):
         def user_to_response(user):
             return {
                 "name": user.fullname,
-                "score": user.score
+                "score": user.score,
+                "avatar_url": user.get_avatar_url()
             }
 
         leaders = [user_to_response(u) for u in db.session.query(User).order_by(-User.score).all()]

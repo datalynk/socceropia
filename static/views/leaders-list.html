@@ -11,7 +11,7 @@
     </tr>
     <tr class="" ng-repeat="leader in leaders | orderBy:'-score'">
       <td class="leaderboard-rank">{{$index+1}}</td>
-      <td class="leaderboard-name">{{leader.name}}</td>
+      <td class="leaderboard-name"><img ng-src="{{leader.avatar_url}}" /> {{leader.name}}</td>
       <td class="leaderboard-points">{{leader.score}}</td>
     </tr>
   </tbody>
