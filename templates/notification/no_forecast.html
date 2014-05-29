@@ -1,0 +1,19 @@
+{% extends "notification/base.html" %}
+{% block content %}
+    <h1>No forecast for upcoming games</h1>
+    <p>Hi, {{user.fullname}}</p>
+    <p>Don't forget to make your forecast for upcoming games</p>
+    <table>
+        <tr>
+            <td>Date</td>
+            <td>Game</td>
+        </tr>
+        {% for game in games %}
+        <tr>
+            <td>{{game.date | datetimeformat}}</td>
+            <td align="center">{{game.team_host.name}} - {{game.team_guest.name}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
