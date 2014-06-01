@@ -8,9 +8,8 @@
     {{ render_field(form.team_1) }}
     {{ render_field(form.team_2) }}
     {{ render_field(form.date) }}
-    {{ render_field(form.extra_time_allowed) }}
     <div>
-        <button type="submit" class="btn btn-default">Addd game</button>
+        <button type="submit" class="btn btn-default">Add game</button>
         <a href="{{url_for('.games')}}">Cancel</a>
     </div>
 </form>

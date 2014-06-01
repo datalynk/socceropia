@@ -26,6 +26,7 @@
                         <th>Score</th>
                         <th>Joined</th>
                         <th>Login count</th>
+                        <th>Forecasts</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,7 @@
                         <td class="center">{{user.score}}</td>
                         <td class="center">{{user.confirmed_at | datetimeformat}}</td>
                         <td class="center">{{user.login_count}}</td>
+                        <td class="center"><a href="{{ url_for('.view_user_forecasts', user_id=1) }}">view</a></td>
                     </tr>
                     {% endfor %}
                     </tbody>
