@@ -27,4 +27,3 @@ class GameForm(Form):
     team_1 = SelectField(u'Host team', description='Host team', coerce=int)
     team_2 = SelectField(u'Guest team', description='Guest team', coerce=int)
     date = DateTimeField(u'Date', description='Date time in UTC')
-    extra_time_allowed = BooleanField('Extra time allowed?')

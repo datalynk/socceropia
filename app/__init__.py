@@ -14,7 +14,7 @@ mail = Mail(app)
 db.init_app(app)
 security.init_app(app)
 
-app.register_blueprint(admin, url_prefix='/admin')
+app.register_blueprint(admin, url_prefix='/admin', static_url_path='')
 
 db.app = app
 db.create_all()

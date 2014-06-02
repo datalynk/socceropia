@@ -23,7 +23,6 @@
                     <th>Team Host</th>
                     <th>Team Guest</th>
                     <th>Date</th>
-                    <th>Extra time?</th>
                     <th>Final result</th>
                     <th>Users / Forecast</th>
                 </tr>
@@ -35,7 +34,6 @@
                     <td>{{game.team_host.name}}</td>
                     <td>{{game.team_guest.name}}</td>
                     <td>{{game.date}}</td>
-                    <td class="center">{{game.extra_time_allowed}}</td>
                     <td class="center">{{ game_result(game) }}</td>
                     <td class="center">{{total_users}} / {{ forecast_stat[game.id] }}</td>
                 </tr>

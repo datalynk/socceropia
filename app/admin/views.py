@@ -26,3 +26,25 @@ def games():
 def users():
     users = db.session.query(User).all()
     return render_template('admin/users.html', users=users)
+
+
+@admin.route('/users/<int:user_id>/forecasts')
+def view_user_forecasts(user_id):
+    user = User.query.get(user_id)
+
+    items = db.session.query(Game, Forecast).\
+        outerjoin(Forecast, db.and_(Game.id == Forecast.game_id, Forecast.user_id == user_id)).\
+        all()
+
+    has_prediction = lambda x: x[1] is not None
+
+    games_predictions = []
+    games = []
+
+    for i in items:
+        (games_predictions if has_prediction(i) else games).append(i)
+
+    return render_template('admin/user_forecast.html',
+                           games_predictions=games_predictions,
+                           games=games,
+                           user=user)

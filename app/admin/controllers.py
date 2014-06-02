@@ -41,6 +41,15 @@ def add_game():
     form = forms.GameForm()
     form.team_1.choices = teams
     form.team_2.choices = teams
+
+    if form.validate_on_submit():
+        game = Game()
+        form.populate_obj(game)
+        db.session.add(game)
+        db.session.commit()
+        flash("Game was added.")
+        return redirect(url_for('.games'))
+
     return render_template('admin/game_form.html', form=form)
 
 
@@ -54,6 +63,9 @@ def edit_game_result(game_id):
     form = forms.GameResultForm()
     game = db.session.query(Game).get(game_id)
 
+    form.team_host_goals.label.text = game.team_host.name
+    form.team_guest_goals.label.text = game.team_guest.name
+
     if game.result:
         abort("Game result already exists")
 
@@ -62,11 +74,12 @@ def edit_game_result(game_id):
         form.populate_obj(result)
         db.session.add(result)
 
-        """"forecasts = db.session.query(Forecast).filter(Forecast.game_id == game_id).all()
+        forecasts = db.session.query(Forecast).filter(Forecast.game_id == game_id).all()
         for forecast in forecasts:
             score = calculate_score(forecast, result)
+            forecast.points = score
             forecast.user.score += score
-        """""
+
         db.session.commit()
 
 

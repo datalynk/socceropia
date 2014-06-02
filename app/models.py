@@ -5,6 +5,7 @@ from flask.ext import security
 
 db = SQLAlchemy()
 
+
 class Role(db.Model, security.RoleMixin):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(80), unique=True)
@@ -68,6 +69,16 @@ class Game(db.Model):
         five_min_before = self.date - datetime.timedelta(seconds=300)
         return five_min_before > datetime.datetime.now()
 
+    @property
+    def game_title(self):
+        return self.team_host.name + " - " + self.team_guest.name
+
+    @property
+    def game_result(self):
+        if self.result:
+            return "{} - {}".format(self.result.team_host_goals, self.result.team_guest_goals)
+        return 'N/A'
+
 
 class GameDetail(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -102,8 +113,13 @@ class Forecast(db.Model):
     forecast = db.Column(db.Integer)
     team_host_goals = db.Column(db.Integer)
     team_guest_goals = db.Column(db.Integer)
+    points = db.Column(db.Integer, default=0)
     game = db.relationship('Game')
     user = db.relationship('User')
 
     def final_score(self):
         return self.team_host_goals, self.team_guest_goals
+
+    @property
+    def prediction(self):
+        return "{} - {}".format(self.team_host_goals, self.team_guest_goals)
