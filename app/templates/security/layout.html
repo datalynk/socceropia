@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="/app/static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/app/static/admin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/app/static/admin/js/plugins/pickmeup/css/pickmeup.min.css" rel="stylesheet">
+    <link href="/app/static/admin/css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="/app/static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/app/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/app/static/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/app/static/admin/js/plugins/pickmeup/js/jquery.pickmeup.min.js"></script>
+    <script src="/app/static/admin/js/sb-admin.js"></script>
+
+</body>
+
+</html>
